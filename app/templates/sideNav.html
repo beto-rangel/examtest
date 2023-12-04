@@ -1,0 +1,27 @@
+<md-sidenav layout="column"  md-whiteframe="4" class="md-sidenav-left"
+            md-component-id="left" flex style="z-index:999; position:absolute;">
+    <div class="md-toolbar-tools-bottom"  ng-controller="HeaderController as headerCtrl">
+        <img src="../images/test.png">
+        <p class="name">{{headerCtrl.user.nombre}} | {{headerCtrl.user.role}}</p>
+        <p class="email">{{headerCtrl.user.email}}</p>
+    </div>
+    <md-list flex>
+        <md-list-item ng-class="{{link.class}}"  class="ease" ng-hide="{{link.hide}}"  
+           ng-repeat="link in ctrl.sideNav.basics " ng-click="go(link.link)">
+            <md-icon  class="material-icons">{{link.icon}}</md-icon><p>{{link.name}}</p>
+        </md-list-item>
+        <md-list-item ng-class="{{link.class}}"  class="ease" ng-hide="{{link.hide}}"  
+           ng-repeat="link in ctrl.sideNav.Leads " ng-click="go(link.link)">
+            <md-icon  class="material-icons">{{link.icon}}</md-icon><p>{{link.name}}</p>
+        </md-list-item>
+        <md-list-item ng-class="{{link.class}}"  class="ease" ng-hide="{{link.hide}}"  
+           ng-repeat="link in ctrl.sideNav.Empresas " ng-click="go(link.link)">
+            <md-icon  class="material-icons">{{link.icon}}</md-icon><p>{{link.name}}</p>
+        </md-list-item>
+        
+        <md-divider></md-divider >
+        <md-list-item class="ease" ng-controller="loginController as logCtrl" ng-click="logCtrl.logOut()">
+            <md-icon class="icon-sidebar material-icon">power_settings_new</md-icon><p>Salir</p>   
+        </md-list-item>
+    </md-list>
+</md-sidenav>

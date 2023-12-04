@@ -1,0 +1,32 @@
+<div id="Splash" class="animated fadeOutUp delay3">
+  <div class="logoPrimary animated fadeInDown">
+    <img src="images/test.png" alt=""/> 
+  </div>
+</div>
+
+<div class="loginForm">
+  <div class="logoPrimary delay4 animated fadeIn" style="margin-top: -100px">
+    <img src="images/test.png" alt=""/ style="width: 160px"> 
+  </div>
+
+  
+<form id="login" style="opacity: 0.2" ng-submit="logIn(datos)" name="frm" class="md-whiteframe-1dp delay4 animated fadeInUp" layout="column" layout-padding>
+	<md-input-container class="md-no-float  md-icon-right md-block md-primary" flex>
+      <!-- Use floating placeholder instead of label -->
+      <md-icon class="mdi mdi-phone md-primary"></md-icon>
+      <input  type="text" name="phone" ng-model="datos.phone" placeholder="Telefono" required>
+      <md-icon class="material-icons" ></md-icon>
+      <div ng-messages="frm.reuired.$error">
+          <div ng-message="required">Este campo es requerido  </div>
+      </div>
+  </md-input-container> 
+       
+    <div layout="row" layout-align="end">
+	    <md-button class="md-raised md-primary" ng-disabled="!frm.$valid" ng-click="logIn(datos)">
+      Entrar
+      </md-button>
+    </div>
+     <input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;"/>
+  
+</form>
+</div>

@@ -1,0 +1,107 @@
+<md-toolbar >
+    <div  class="md-toolbar-tools">
+        <md-button class="md-icon-button" ng-click="closeSN('create')">
+          <md-icon class="material-icons md-24">arrow_back</md-icon>
+         </md-button>
+        <h1 class="md-toolbar-tools">
+            Agregar Usuario</h1>
+        <div flex></div>
+    </div>
+</md-toolbar>
+<md-content  ng-controller="UsersCreateController as userAddCtrl" layout-padding>            
+    <form  name="frm" layout="column">
+
+        <!-- NOMBRE DE USUARIO -->
+        <md-input-container style="margin-top:-0.3em;">
+            <label >Nombre</label>
+            <input  name="fname" type="text"  onKeyUp="this.value=this.value.toUpperCase();"
+                   ng-model="userAddCtrl.model.name" required>
+            <div ng-messages="frm.fname.$error" ng-if="frm.fname.$touched">
+                <div ng-message="required" class="md-warn md-caption">*Este campo es requerido</div>
+            </div>
+        </md-input-container>
+
+        <!-- APELLIDOS DE USUARIO -->
+        <md-input-container style="margin-top:-0.3em;">
+            <label >Apellidos</label>
+            <input  name="flast_name" type="text"  onKeyUp="this.value=this.value.toUpperCase();"
+                   ng-model="userAddCtrl.model.last_name" required>
+            <div ng-messages="frm.flast_name.$error" ng-if="frm.flast_name.$touched">
+                <div ng-message="required" class="md-warn md-caption">*Este campo es requerido</div>
+            </div>
+        </md-input-container>
+
+        <!-- CELULAR DE USUARIO -->
+        <md-input-container style="margin-top:-0.3em;">
+            <label >Celular</label>
+            <input  name="fphone" type="text" 
+                   ng-model="userAddCtrl.model.phone" required>
+            <div ng-messages="frm.fphone.$error" ng-if="frm.fphone.$touched">
+                <div ng-message="required" class="md-warn md-caption">*Este campo es requerido</div>
+            </div>
+        </md-input-container>
+
+        <!-- EMAIL -->
+        <md-input-container style="margin-top:-0.3em;">
+            <label><md-icon class="mdi mdi-email"></md-icon> Correo Electrónico</label>
+            <input name="fEmail" required type="email" ng-model="userAddCtrl.model.email" >
+            <div ng-messages="frm.fEmail.$error" ng-if="frm.fEmail.$touched">
+                <div ng-message="required" class="md-warn md-caption">*Este campo es requerido</div>
+                <div ng-message="email" class="md-warn md-caption">Debes ingresar un email válido</div>
+            </div>
+        </md-input-container>
+
+        <!-- PASSWORD -->
+        <md-input-container style="margin-top:-0.3em;">
+            <label ><md-icon class="mdi mdi-key"></md-icon> Contraseña</label>
+            <input name="fPassword" type="password" ng-model="userAddCtrl.model.password"
+                   required minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+            <div ng-messages="frm.fPassword.$error">
+                <div ng-message="required" class="md-warn md-caption">Este campo es necesario</div>
+                <div ng-message="minlength" class="md-warn md-caption">Mínimo 8 caracteres.</div>
+                <div ng-message="pattern" class="md-warn md-caption">Al menos una letra debe ser mayúscula,
+                    una minúscula y un número.
+                </div>
+            </div>
+        </md-input-container>
+
+        <!-- PASSWORD REPEAT -->
+        <md-input-container style="margin-top:-0.3em;">
+            <label><md-icon class="mdi mdi-key"></md-icon> Repite tu contraseña</label>
+            <input name="fPasswordConfirm" type="password"
+                   ng-model="password_confirmation"
+                   match="userAddCtrl.model.password" required>
+            <div ng-messages="frm.fPasswordConfirm.$error">
+                <div ng-message="required" class="md-warn md-caption">*Este campo es necesario</div>
+                <div ng-message="match" class="md-warn md-caption">La contraseña no coincide.</div>
+            </div>
+        </md-input-container>
+
+        <!--ROLE-->
+        <md-input-container style="margin-top:-0.3em;" ng-if="isAD()">
+            <label for="role"> Tipo de Usuario</label>
+            <md-select id="role" ng-model="userAddCtrl.model.role" name="fRole" required>
+                <md-option ng-repeat="role in userAddCtrl.roles" value="{{role.name}}">{{role.name}}
+
+                </md-option>
+            </md-select>
+            <div ng-messages="frm.fRole.$error" ng-if="frm.fRole.$touched">
+                <div ng-message="required" class="md-warn md-caption">*Este campo es requerido</div>
+            </div>
+        </md-input-container>
+
+
+        <!-- FOTOGRAFIA -->
+        <div class="box" flex="100" >
+            <span>Fotografía</span>
+          <input type="file" name="foto_area" id="foto_area" class="inputfile inputfile down1" file-model="userAddCtrl.photo" required> 
+        </div>
+      
+        
+
+        <md-button  ng-click="userAddCtrl.saveActionButton(frm)" class="md-raised md-primary"
+                   ng-disabled="!frm.$valid && userAddCtrl.photo == null " style="margin-top:2em;">
+            Guardar Usuario
+        </md-button>
+    </form>
+</md-content>

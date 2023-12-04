@@ -1,0 +1,320 @@
+/* CSS Document */
+@import url('https://fonts.googleapis.com/css?family=Lato');
+body{
+	background-image:url(); 
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+	background-position: center center;
+	font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+	color:#212121;
+	height: 1024px
+}
+
+
+main{
+	/*outline:1px red solid;*/
+}
+.applDate div .md-datepicker-input{
+	min-width:250px !important;
+}
+				
+.candFieldset{
+	margin:1.5em 0em;
+	border: #7CA7B0 solid 1px;
+	border-radius:2px;
+}
+
+.candFieldset legend{
+	color:#7CA7B0;
+	font-weight:bold;
+}
+/* xxs*/
+@media (max-width: 600px)  {
+	.applDate div .md-datepicker-input{
+		min-width:400px !important; 
+	}
+}
+@media (max-width: 400px)  {
+	.applDate div .md-datepicker-input{
+		min-width:200px !important; 
+	}
+	.applDate div, .birthdate {
+		margin-left:0 !important;
+		
+	}
+	.CandTitle{
+		margin-top:1.3em;
+	}
+    .birthdate div .md-datepicker-input{
+	min-width:200px !important;
+    }
+				
+}
+
+/* Fixing and Style*/
+md-content{
+	background:none;
+	margin-bottom:40px;
+}
+.mdi:before{
+	position: relative;
+    top: -2px;
+}
+.centerblock{
+	margin:0 auto !important;
+}
+
+.noTopPadding{
+	padding-top:0px !important;
+}
+
+.centertext{
+	text-align:center !important;
+}
+.right{
+	text-align:right !important;
+}
+.left{
+	text-align:left !important;
+	}
+
+.frmGroup{
+	border:solid 2px #D3D3D3;
+	border-radius:3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	
+}
+
+.frmGroup legend{
+	font-weight:500;
+	font-size:1.2em;
+}
+
+#TemasSV h1{	
+    font-family: "Lato";
+    color: rgb(0,87,123);
+    font-weight: 700;
+    font-size: 1.5em;
+    font-style: normal;
+	text-align: center;
+}
+
+#TemasSV h2{
+	
+    font-family: "Lato";
+    color: rgb(0,87,123);
+    font-weight: 700;
+    font-size: 1em;
+    font-style: normal;
+}
+
+#TemasSV h3{
+
+    font-family: "Lato";
+    color: rgb(118,173,64);
+    font-weight: 700;
+    font-size: 1.2em;
+    font-style: normal;
+}
+
+#TemasSV{
+	padding: 2em;
+}
+#TemasSV p, #TemasSV ul{
+	font-size: 0.9em;
+}
+#TemasL h1{	
+    font-family: "Lato";
+    color: rgb(204,0,0);
+    font-weight: 700;
+    font-size: 1.5em;
+    font-style: normal;
+	text-align: center;
+}
+
+#TemasL h2{
+	
+    font-family: "Lato";
+    color: rgb(204,0,0);
+    font-weight: 700;
+    font-size: 1em;
+    font-style: normal;
+}
+
+#TemasL{
+	padding: 2em;
+}
+#TemasL p, #TemasSV ul{
+	font-size: 0.9em;
+}
+
+@media (min-width: 1280px) {
+    md-radio-button.fix .md-label {
+        margin-top:25px;
+    }
+}
+.birthdate div .md-datepicker-input{
+	min-width:150px !important;
+}
+/* -------------------------------
+------------------SPLASH ---------*/
+#Splash{
+	width:100%;
+	margin:0 auto;
+    position: absolute;
+	padding-top:20vh;
+}
+#Splash .logoPrimary , .loginForm .logoPrimary{
+	text-align:center;
+}
+
+#Splash .logoPrimary img{
+	width:30%;
+	max-width:400px !important; 
+}
+
+@media (orientation:portrait) and (max-width:600px){
+	#Splash{
+		padding-top:20vh;
+
+	}
+		#Splash .logoPrimary img{
+		width:85%;
+		margin-left:10px; 
+	}
+	
+	.loginForm{
+		top:2em;
+		margin-left:2.5%;
+		position:absolute;
+	}
+
+}
+
+@media (min-width:401px) and (max-width:1300px){
+	#Splash{
+		padding-top:20vh;
+	}
+
+}
+
+/* -------------------------------
+------------------LOGIN ---------*/
+
+.loginForm{
+	margin:0 auto;
+	position:relative;
+	width:90%;
+	max-width:500px;
+	top:20vh;
+	opacity: 0.8;
+	-moz-opacity: 0.8;
+	filter: alpha(opacity=80);
+	-khtml-opacity: 0.8;
+}
+.passRecovery{
+	margin:0 auto;
+	position:relative;
+	width:95%;
+	max-width:500px;
+	padding-top:10%
+}
+.loginForm .logoPrimary img, .passRecovery .logoPrimary img{
+	width:80%;
+	margin: 0 auto !important;
+}
+
+.loginForm #login, .passRecovery form{
+	background-color:white;
+	overflow:auto;
+	display:block;
+}
+
+
+
+/* Fixing and Style*/
+
+.centerblock{
+	margin:0 auto !important;
+}
+
+.centertext{
+	text-align:center !important;
+}
+
+a{
+	text-decoration:none;
+	color:#2f66b1;
+}
+
+.material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
+.material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
+
+
+.material-icons.md-light { color: rgba(255, 255, 255, 1); }
+.material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
+
+md-button .md-caption{
+    font-size: smaller;
+}
+
+.matRed-text{
+	color:#D62F2F;
+}
+
+@media (min-width: 1280px) {
+md-radio-button.fix .md-label {
+	margin-top:0px;
+}
+}
+/* -------------ANIMATION -------------------*/
+.delay05{
+	-webkit-animation-delay: 0.5s; /* Chrome, Safari, Opera */
+    animation-delay: 0.5s;
+}
+.delay1{
+	-webkit-animation-delay: 1s; /* Chrome, Safari, Opera */
+    animation-delay: 1s;
+}
+.delay2{
+	-webkit-animation-delay: 2s; /* Chrome, Safari, Opera */
+    animation-delay: 2s;
+}
+.delay3{
+	-webkit-animation-delay: 3s; /* Chrome, Safari, Opera */
+    animation-delay: 3s;
+}
+.delay4{
+	-webkit-animation-delay: 4s; /* Chrome, Safari, Opera */
+    animation-delay: 4s;
+}
+.delay5{
+	-webkit-animation-delay: 5s; /* Chrome, Safari, Opera */
+    animation-delay: 5s;
+}
+.delay6{
+	-webkit-animation-delay: 6s; /* Chrome, Safari, Opera */
+    animation-delay: 6s;
+}
+.delay7{
+	-webkit-animation-delay: 7s; /* Chrome, Safari, Opera */
+    animation-delay: 7s;
+}
+.delay8{
+	-webkit-animation-delay: 8s; /* Chrome, Safari, Opera */
+    animation-delay: 8s;
+}
+.delay9{
+	-webkit-animation-delay: 9s; /* Chrome, Safari, Opera */
+    animation-delay: 9s;
+}
+.delay10{
+	-webkit-animation-delay: 10s; /* Chrome, Safari, Opera */
+    animation-delay: 10s;
+}
+
+
+
+

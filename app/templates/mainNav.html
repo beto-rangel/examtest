@@ -1,0 +1,44 @@
+<md-toolbar layout-wrapp style="min-height:40px;border-bottom:0px solid; background-color: #080707; position: fixed;" md-whiteframe="2" ng-controller="HeaderController as headerCtrl">
+ 	<style>
+		.link{
+			font-size: 14px;
+			margin:0 10px;
+			cursor: pointer;
+			color: white;
+		}
+		.link.active{
+			color: white;
+			font-weight: bold
+		}
+		.link:hover{
+			color: white;
+		}
+	</style>
+  <div class="md-toolbar-tools" style="height: 40px;" layout="row" layout-align="space-between center">
+    <md-button class="md-icon-button md-primary" aria-label="Menú" ng-click="toggleSidenav('left')" hide-gt-sm>
+      <md-icon class="material-icons">menu</md-icon>
+    </md-button>
+    <h2 flex align="center"  hide-gt-sm>
+      <span>{{$root.title}}</span>
+    </h2>
+    <div style="background: white; height: 40px; box-shadow: 0px 0px 13px -2px rgba(0,0,0,0.75);" layout="column" layout-align="center center" hide-xs hide-sm>
+    <img src="../images/test_ico.ico" alt="Work Scanda" style="height: 40px; border-radius: 45px"/> 
+		</div>
+		<div class="link " ng-click="go(link.link)"  ng-class="{{link.class}}"  ng-repeat="link in ctrl.sideNav.basics"  hide-xs hide-sm ng-hide="{{link.hide}}">{{link.name}}</div>
+    
+		<span flex></span>
+		<md-button class="md-icon-button md-primary"  ng-if="Usuario.brand_id==0"  hide-xs hide-sm><md-icon class="material-icons">account_circle</md-icon></md-button>
+		<div  style="margin-right: 5px; overflow: hidden; border-radius: 50%; width: 35px; height: 35px; border:2px rgba(255,255,255,0.9) solid;box-shadow: 0px 0px 13px -2px rgba(0,0,0,0.75);"  hide-xs hide-sm>
+			<img src="../images/test_ico.ico" alt="Work Scanda" style="background-color: white; border-radius: 45px; width: 45px; height: 45px"/>
+		</div>
+		
+		<span layout="column" layout-align="center"  hide-xs hide-sm>
+			<span style="font-size:13px"><strong>{{headerCtrl.user.name}} {{headerCtrl.user.last_name}} | {{headerCtrl.user.role}}</strong></span>
+			<span style="font-size:13px">{{headerCtrl.user.email}}</span>
+		</span>
+		
+		<md-button class="md-icon-button" ng-controller="loginController as logCtrl" ng-click="logCtrl.logOut()" ><md-icon class="material-icons">power_settings_new</md-icon></md-button>
+
+  </div>
+ 
+</md-toolbar>

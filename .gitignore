@@ -1,0 +1,5 @@
+*.zip
+*.rar
+._*
+#_*
+.htaccess

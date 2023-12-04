@@ -1,0 +1,169 @@
+
+ <div layout-wrap layout="row" style="margin-top: 4em" layout-align-gt-sm="space-between" layout-align="space-between">
+
+    <md-input-container flex="30" md-no-float style="margin: 0 !important;" >
+      <md-icon class="mdi mdi-magnify md-primary" style="display:inline-block;"></md-icon>
+      <input ng-model="filter_search" type="text" placeholder="Buscar" >
+    </md-input-container>
+
+    <div ng-click="userCtrl.getPdfUsers()" flex layout-align="center center" layout="column" style="padding-left: 3em; margin-top: -1.5em" >
+      <a style="font-size: 11px; font-weight: 900; color: #585856; margin-top: 0px;" href="{{getUsersByPdf}}?token={{userCtrl.token}}" target="_blank" >
+        <md-icon class="mdi mdi-file-pdf" style="color: red"></md-icon>
+      </a>
+      <span style="font-size: 11px; font-weight: 900; color: #585856; margin-top: 0px;">Usuarios PDF</span>
+    </div>
+
+    <md-input-container flex="30" md-no-float style="margin: 0 !important;">
+    </md-input-container>
+</div>
+
+<md-content flex layout-padding class="noTopPadding" layout-gt-xs="row" layout-align="space-around start" layout-wrap>
+
+<md-subheader flex="100" class="md-primary" ng-if="isAD()||isUser()">&nbsp;&nbsp;Administrador</md-subheader>
+  
+    <md-card ng-repeat="user in userCtrl.users | filter:filter_search | orderBy: userCtrl.order | filter:{role:'Administrador'}" ng-if="isAD()||isUser()" flex="40" class="userCard" >
+      <md-card-title>
+        <md-card-title-media>
+          <img  ng-src="{{userCtrl.ruta}}{{user.id}}/imagen/{{user.photo}}" ng-if="user.photo != null && user.photo != '' " style="width: 80px; background-size: contain; margin-right: 1em; border-radius: 1em">
+            <img ng-src="images/photos/none3.jpg" ng-if="user.photo == null || user.photo == '' " style="width: 80px; margin-right: 1em;">
+        </md-card-title-media>
+        <md-card-title-text >
+          <span class="md-headline" >
+            {{user.name}} {{user.last_name}} 
+          </span>
+          <span class="md-subhead description">
+            <md-icon class="mdi mdi-phone"></md-icon> 
+            {{user.phone}}
+          </span>
+          <a ng-href="mailto:{{user.email}}" class="md-subhead description">
+          	<md-icon class="mdi mdi-email"></md-icon> 
+            {{user.email}}
+          </a>
+          <span class="md-subhead description">
+          	<md-icon class="mdi mdi-settings"></md-icon> 
+            {{user.role}}
+          </span>
+          <span class="md-subhead description">
+            <md-icon class="mdi mdi-calendar"></md-icon> 
+            Registro: {{user.created_at}}
+          </span>
+          <span class="md-subhead description">
+            <md-icon class="mdi mdi-calendar"></md-icon> 
+            Ult. actualización: {{user.updated_at}}
+          </span>
+          <span class="md-subhead description">
+            <md-icon class="mdi mdi-calendar"></md-icon> 
+            Último login: {{user.last_login}}
+          </span>
+            <span class="md-subhead description" >
+            <md-icon class="" ng-style="user.status == 'Activo' ? {'background-color':'green'} : {'background-color':'red'}" style="border-radius: 30px"></md-icon> {{user.status}}
+          </span>
+        </md-card-title-text>
+        <md-card-actions layout="column" hide-xs>
+            <md-button class="md-icon-button md-primary" aria-label="Editar"  ng-click="userCtrl.editUser(user.id, $index)" 
+              ng-if="userCtrl.Usuario.role == 'Administrador' || userCtrl.Usuario.id == user.id ">
+                <md-tooltip md-direction="right">EDITAR</md-tooltip>
+              <md-icon class="mdi mdi-pencil"></md-icon>
+            </md-button>
+            <md-button class="md-icon-button md-primary" aria-label="Eliminar" ng-if="isAD()" ng-controller="UsersDeleteController as userDelCtrl" ng-click="userDelCtrl.deleteUser(user.id,user.nombre,user.paterno)">
+              <md-tooltip md-direction="right">ELIMINAR</md-tooltip>
+              <md-icon class="mdi mdi-delete"></md-icon>
+            </md-button>
+            <md-button class="md-icon-button md-primary" aria-label="Cambiar Password" ng-click="userCtrl.editPasswordUser(ev, user.id)"
+              ng-if="userCtrl.Usuario.role == 'Administrador' || userCtrl.Usuario.id == user.id " >
+              <md-tooltip md-direction="right">Cambiar Password</md-tooltip>
+              <md-icon class="mdi mdi-key"></md-icon>
+            </md-button>
+          </md-card-actions>
+      </md-card-title>
+    </md-card>
+
+
+  
+ <md-subheader flex="100" class="md-primary" ng-if="isAD()||isUser()">&nbsp;&nbsp;Usuarios</md-subheader>
+    <md-card ng-repeat="user in userCtrl.users | filter:filter_search | orderBy: userCtrl.order | filter:{role:'Usuario'}" flex="40" class="userCard" >
+      <md-card-title>
+        <md-card-title-media>
+          <img  ng-src="{{userCtrl.ruta}}{{user.id}}/imagen/{{user.photo}}" ng-if="user.photo != null && user.photo != '' " style="width: 80px; background-size: contain; margin-right: 1em; border-radius: 1em">
+            <img ng-src="images/photos/none3.jpg" ng-if="user.photo == null || user.photo == '' " style="width: 80px; margin-right: 1em;">
+        </md-card-title-media>
+        <md-card-title-text >
+          <span class="md-headline" >
+            {{user.name}} {{user.last_name}} 
+          </span>
+          <span class="md-subhead description">
+            <md-icon class="mdi mdi-phone"></md-icon> 
+            {{user.phone}}
+          </span>
+          <a ng-href="mailto:{{user.email}}" class="md-subhead description">
+            <md-icon class="mdi mdi-email"></md-icon> 
+            {{user.email}}
+          </a>
+          <span class="md-subhead description">
+            <md-icon class="mdi mdi-settings"></md-icon> 
+            {{user.role}}
+          </span>
+          <span class="md-subhead description">
+            <md-icon class="mdi mdi-calendar"></md-icon> 
+            Registro: {{user.created_at}}
+          </span>
+          <span class="md-subhead description">
+            <md-icon class="mdi mdi-calendar"></md-icon> 
+            Ult. actualización: {{user.updated_at}}
+          </span>
+          <span class="md-subhead description">
+            <md-icon class="mdi mdi-calendar"></md-icon> 
+            Último login: {{user.last_login}}
+          </span>
+            <span class="md-subhead description" >
+            <md-icon class="" ng-style="user.status == 'Activo' ? {'background-color':'green'} : {'background-color':'red'}" style="border-radius: 30px"></md-icon> {{user.status}}
+          </span>
+        </md-card-title-text>
+        <md-card-actions layout="column" hide-xs>
+            <md-button class="md-icon-button md-primary" aria-label="Editar"  ng-click="userCtrl.editUser(user.id, $index)"
+              ng-if="userCtrl.Usuario.role == 'Administrador' || userCtrl.Usuario.id == user.id " >
+                <md-tooltip md-direction="right">EDITAR</md-tooltip>
+              <md-icon class="mdi mdi-pencil"></md-icon>
+            </md-button>
+            <md-button class="md-icon-button md-primary" aria-label="Eliminar" ng-if="isAD()" ng-controller="UsersDeleteController as userDelCtrl" ng-click="userDelCtrl.deleteUser(user.id,user.nombre,user.paterno)">
+              <md-tooltip md-direction="right">ELIMINAR</md-tooltip>
+              <md-icon class="mdi mdi-delete"></md-icon>
+            </md-button>
+            <md-button class="md-icon-button md-primary" aria-label="Cambiar Password" ng-click="userCtrl.editPasswordUser(ev, user.id)" 
+              ng-if="userCtrl.Usuario.role == 'Administrador' || userCtrl.Usuario.id == user.id ">
+              <md-tooltip md-direction="right">Cambiar Password</md-tooltip>
+              <md-icon class="mdi mdi-key"></md-icon>
+            </md-button>
+          </md-card-actions>
+      </md-card-title>
+    </md-card>
+
+
+    
+
+</md-content>
+
+<md-button aria-label="Agregar Usuario" 
+           class="md-button md-fab md-fab-bottom-right md-fab-fixed md-primary" ng-controller="SidebarFormController as sbfCtrl" ng-if="isAD()"
+           ng-click="sbfCtrl.openFormSidebar('create')" ng-hide="sbfCtrl.isOpen('create')" >
+    <md-tooltip md-direction="top"> Nuevo Usuario</md-tooltip>
+    <md-icon class="mdi mdi-plus"></md-icon>
+</md-button>
+
+<!-- ----------------------------------------------------------------------------------------
+    ----------------------------------    SIDENAV DE CREACIÓN  ------------------------------
+    ---------------------------------------------------------------------------------------->
+    <md-sidenav md-component-id="create" class="md-sidenav-right" style="min-width:30% !important; z-index:51;" md-whiteframe="2" >
+
+    <ng-include src="'templates/users/sn_usercreate.html'"></ng-include>
+
+    </md-sidenav>
+
+<!-- ----------------------------------------------------------------------------------------
+    ----------------------------------    SIDENAV DE EDICIÓN  ------------------------------
+    ---------------------------------------------------------------------------------------->
+    <md-sidenav md-component-id="update" class="md-sidenav-right" style="min-width:30% !important; z-index:51;" md-whiteframe="2" >
+
+    <ng-include src="'templates/users/sn_useredit.html'"></ng-include>
+
+    </md-sidenav>
